@@ -24,7 +24,7 @@ export const diskAPI = {
         
     },
 
-    async GetDisk() //changingIsFetching, setAssortiment - я незнаю зачем эти параметры
+    async GetFiles() //changingIsFetching, setAssortiment - я незнаю зачем эти параметры
     {
         let response = await instance.get("v1/disk/resources/files");
         return response.data.items;

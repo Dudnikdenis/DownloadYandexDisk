@@ -1,7 +1,6 @@
 import './App.css';
-import axios from "axios";
 import UserDiskCotainer from './Components/UserDisk/UserDiskContainer';
-import {useEffect, useState} from "react"
+import {BrowserRouter, Routes,Route,} from 'react-router-dom'
 
 function App() {
   return (
