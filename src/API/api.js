@@ -10,10 +10,10 @@ const instance = axios.create({
 export const diskAPI = {
 
 
-    async GetResources() //changingIsFetching, setAssortiment - я незнаю зачем эти параметры
+    async GetResources(path) //changingIsFetching, setAssortiment - я незнаю зачем эти параметры
     {
-        let response = await instance.get("v1/disk/resources?path=disk:/Загрузки/");
-        return response.data.name;
+        let response = await instance.get(`v1/disk/resources?path=${path}`); //disk:/Загрузки/
+        return response.data._embedded.items;
         
     },
     

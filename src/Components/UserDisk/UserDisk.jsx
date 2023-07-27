@@ -1,4 +1,6 @@
 import React, {useEffect, useState} from "react";
+import cs from './userDisk.module.css';
+import { Link } from "react-router-dom";
 
 const UserDisk = (props) =>{
 
@@ -8,9 +10,13 @@ const UserDisk = (props) =>{
   },[])
   
     return (
-        <div>
-            {/* {Object.keys(props.userDiskdisk).map(key => <a href={props.userDiskdisk[key]} key={key}>{props.userDiskdisk[key]}</a>)} */}
-        </div>
+        <li className={cs.user_disk}>
+            {Object.keys(props.userDisk.userDisk).map(key => 
+            <ul>
+              <Link className={cs.userLink} to={"/resource/"+key}>{props.userDisk.userDisk[key]}</Link>
+            </ul>
+            )}
+        </li>
     )
 };
 
