@@ -4,18 +4,16 @@ import { Link } from "react-router-dom";
 
 const UserDisk = (props) =>{
 
-  useEffect(()=>{
+    useEffect(()=>{
     props.getUserDisk();
     
   },[])
-  
-    return (
+      return (
         <li className={cs.user_disk}>
             {Object.keys(props.userDisk.userDisk).map(key => 
-            <ul>
-              <Link className={cs.userLink} to={"/resource/"+key}>{props.userDisk.userDisk[key]}</Link>
-            </ul>
-            )}
+            <ul >
+              <Link className={cs.userLink} to={"/resource"} state={{ from: props.userDisk.userDisk[key] }}>{key}</Link>
+            </ul>)}
         </li>
     )
 };

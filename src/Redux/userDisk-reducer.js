@@ -20,7 +20,7 @@ let initialState = {
 export const setUserDisk=(userDisk)=> ({type: SET_USER_DISK, userDisk});
 
 
-export const getUserDisk = () => {   // Thunk
+export const getUserDisk = () => {
     return (dispatch) => {
         diskAPI.GetDisk().then(response => {
         dispatch (setUserDisk(response))

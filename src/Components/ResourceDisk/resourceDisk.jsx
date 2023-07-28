@@ -1,24 +1,30 @@
 import React, {useEffect} from "react";
-import { useParams, Link } from "react-router-dom";
-
+import { Link,useLocation } from "react-router-dom";
+import cs from './resourceDisk.module.css'
 
 const ResourceDisk = (props) =>{
 
-    const {path} = useParams(); //используется вместо withRouter
-    const athResource = props.userDisk.userDisk[path];
-    console.log(props.resourceDisk.resourceDisk);
+    const location = useLocation()
+    const { from } = location.state
+
     useEffect(()=>{
-        props.getResourceDisk(athResource);
-    },[])
+        props.getResourceDisk(from);
+    },[from])
 
     return(
-        <div>
+        <div className={cs.li_disk}>
             <Link to={'/'}>Назад</Link>
-            {props.resourceDisk.resourceDisk.map(r=>
-                <div>
-                    {r.name}
-                </div>)}
+            <li >
+                {props.resourceDisk.resourceDisk.map(r=>r.type==="dir"? 
+                <ul>
+                    <Link to = {"/resource"} state={{ from: r.path }}>{r.name}</Link> 
+                </ul>:
+                <ul>
+                    <a href={r.file}>{r.name}</a>
+                </ul>)}
+            </li>
         </div>
+        
     )
 };
 
