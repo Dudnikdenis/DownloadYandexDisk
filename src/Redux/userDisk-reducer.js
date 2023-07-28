@@ -9,25 +9,21 @@ let initialState = {
 
     switch (action.type){
         case SET_USER_DISK: 
-            if(state.assortBlock.length===0 || state.assortBlock.toString() !== action.assortBlock.toString())
-            {
                 return{
                     ...state,
-                    assortBlock: [...state.assortBlock, ...action.assortBlock]
-                };
-            }
-            else return{...state};  
+                    userDisk: {...state.userDisk, ...action.userDisk}
+                }; 
         default:
             return state;    
     }
 }
-export const setUserDisk=(UserDisk)=> ({type: SET_USER_DISK, UserDisk});
+export const setUserDisk=(userDisk)=> ({type: SET_USER_DISK, userDisk});
 
 
-export const getUserDisk = () => {   // Thunk
+export const getUserDisk = () => {
     return (dispatch) => {
         diskAPI.GetDisk().then(response => {
-        dispatch (setUserDisk(response.UserDisk))
+        dispatch (setUserDisk(response))
       });
     };
 };

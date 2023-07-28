@@ -1,9 +1,11 @@
 import { applyMiddleware, combineReducers, createStore } from "redux";
 import userDiskReducer from "./userDisk-reducer";
 import thunkMiddleware from "redux-thunk";
+import resourceDiskReducer from "./resourceDisk-reducer";
 
 let reducers = combineReducers({
-    userDisk: userDiskReducer
+    userDisk: userDiskReducer,
+    resourceDisk:resourceDiskReducer
 });
 
 
